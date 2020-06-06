@@ -64,33 +64,53 @@ function runEnter() {
   // Get the value property of the input element
   var inputValue = inputElement.property("value");
 
+  // Use the form input to filter the data by date
+  
+  var i;
+  var table = document.getElementById("ufo-table");
+    var tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            if (td.innerText === inputValue) {
+                tr[i].style.display = "";
+//hide the rows that don't match.
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+
    console.log(inputValue);
 
-  // Use the form input to filter the data by date
+
   // => is a shortcut for funtion and return
   // the d and the d. can be anything, they just need to match
   //var 
   ufoFilter = ufoFilter.filter(d => d.datetime == inputValue);
-  
-  var ufoFiltered = ufoFilter.map(ufo => ufo.datetime);
-  var ufoFiltered1 = ufoFilter.map(ufo => ufo.city);
-  var ufoFiltered2 = ufoFilter.map(ufo => ufo.state);
-  var ufoFiltered3 = ufoFilter.map(ufo => ufo.country);
-  var ufoFiltered4 = ufoFilter.map(ufo => ufo.shape);
-  var ufoFiltered5 = ufoFilter.map(ufo => ufo.durationMinutes);
-  var ufoFiltered6 = ufoFilter.map(ufo => ufo.comments);
-
-  buildTable(ufoFiltered);
-  buildTable(ufoFiltered1);
-  buildTable(ufoFiltered2);
-  buildTable(ufoFiltered3);
-  buildTable(ufoFiltered4);
-  buildTable(ufoFiltered5);
-  buildTable(ufoFiltered6);
-
-
   console.log(ufoFilter);
+
+ // var ufoFiltered = ufoFilter.map(ufo => ufo.datetime);
+ // var ufoFiltered1 = ufoFilter.map(ufo => ufo.city);
+ // var ufoFiltered2 = ufoFilter.map(ufo => ufo.state);
+ // var ufoFiltered3 = ufoFilter.map(ufo => ufo.country);
+//  var ufoFiltered4 = ufoFilter.map(ufo => ufo.shape);
+ // var ufoFiltered5 = ufoFilter.map(ufo => ufo.durationMinutes);
+ // var ufoFiltered6 = ufoFilter.map(ufo => ufo.comments);
+
+  //d3.select("tbody").html("");
+
+ // buildTable(ufoFiltered);
+ // buildTable(ufoFiltered1);
+ // buildTable(ufoFiltered2);
+ // buildTable(ufoFiltered3);
+ // buildTable(ufoFiltered4);
+ // buildTable(ufoFiltered5);
+  //buildTable(ufoFiltered6);
+
+
+  
 
 
   };
-
